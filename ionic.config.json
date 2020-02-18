@@ -1,0 +1,7 @@
+{
+  "name": "MQTTVendingIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
