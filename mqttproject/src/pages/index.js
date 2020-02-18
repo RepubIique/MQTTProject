@@ -15,14 +15,14 @@ function IndexPage(props) {
         size="md"
         bgImage=""
         bgImageOpacity={1}
-        title="Your landing page title here"
-        subtitle="This landing page is perfect for showing off your awesome product and driving people to sign up for a paid plan."
-        buttonText="Get Started"
+        title="Vending Dispenser"
+        subtitle="Click the button below to sign in / sign up"
+        buttonText="Sign In / Up"
         buttonColor="primary"
         image="https://uploads.divjoy.com/undraw-japan_ubgk.svg"
         buttonOnClick={() => {
           // Navigate to pricing page
-          router.push("/pricing");
+          router.push("/auth/signin");
         }}
       ></HeroSection>
       <ClientsSection

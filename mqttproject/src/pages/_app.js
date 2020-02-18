@@ -15,7 +15,7 @@ function App(props) {
       <Router>
         <>
           <NavbarCustom
-            bg="white"
+            bg="secondary"
             variant="light"
             expand="md"
             logo="https://uploads.divjoy.com/logo.svg"
@@ -54,8 +54,8 @@ function App(props) {
             size="sm"
             bgImage=""
             bgImageOpacity={1}
-            description="A short description of what you do here"
-            copyright="© 2019 Company"
+            description="App Developer"
+            copyright="© 2020 CommonExtract"
             logo="https://uploads.divjoy.com/logo.svg"
           ></Footer>
         </>
