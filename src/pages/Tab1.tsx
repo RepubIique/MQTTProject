@@ -9,6 +9,7 @@ import {
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab1.css";
 import Card from "../components/Card";
+import Howitworks from "../components/HowitworksCard";
 
 const Tab1: React.FC = () => {
   return (
@@ -20,11 +21,7 @@ const Tab1: React.FC = () => {
       </IonHeader>
       <IonContent>
         <Card />
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        <Howitworks />
       </IonContent>
     </IonPage>
   );
