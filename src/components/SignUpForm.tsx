@@ -5,10 +5,9 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonItem,
-  IonLabel,
-  IonInput
+  IonCardSubtitle
 } from "@ionic/react";
+import { TextField } from './CustomInputFields';
 
 import { getUsers, login } from "../actions/accounts";
 
@@ -16,6 +15,8 @@ import AccountsActions from "../actions/accountsActions";
 
 export const SignUpForm: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
+
+  const { username, email, password, lastname, firstname } = state
 
   const { onInputChange } = AccountsActions();
 
@@ -31,85 +32,19 @@ export const SignUpForm: React.FC = () => {
     }
   };
 
-  const { username, email, password, lastname, firstname } = state;
-
   return (
     <IonCard>
       <IonCardHeader>
-        {/*<IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+        {/*<IonCardSubtitle>Sign up here</IonCardSubtitle>
       <IonCardTitle>Sign up</IonCardTitle>*/}
       </IonCardHeader>
       <IonCardContent>
-        <IonItem>
-          <IonLabel position="stacked">
-            Username{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={username}
-            onIonChange={e => {
-              console.log("Enter", e);
-              onInputChange({ key: "username", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="stacked">
-            Password{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={password}
-            onIonChange={e => {
-              console.log("Enter", e);
-              onInputChange({ key: "password", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="stacked">
-            First Name{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={firstname}
-            onIonChange={e => {
-              console.log("Enter", e);
-              onInputChange({ key: "firstname", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="stacked">
-            Last Name{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={lastname}
-            onIonChange={e => {
-              console.log("Enter", e);
-              onInputChange({ key: "lastname", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="stacked">
-            Email{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={email}
-            onIonChange={e => {
-              console.log("Enter", e);
-              onInputChange({ key: "email", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <section>
-          <IonButton expand="block" onClick={submit}>
-            Sign Up
-          </IonButton>
-        </section>
+        <TextField mandatory={true} label={'Username'} fieldname={'username'} value={username} onChange={onInputChange} />
+        <TextField mandatory={true} label={'Password'} fieldname={'password'} value={password} onChange={onInputChange} />
+        <TextField mandatory={true} label={'First Name'} fieldname={'firstname'} value={firstname} onChange={onInputChange} />
+        <TextField mandatory={true} label={'Last Name'} fieldname={'lastname'} value={lastname} onChange={onInputChange} />
+        <TextField mandatory={true} label={'Email'} fieldname={'email'} value={email} onChange={onInputChange} />
+        <IonButton expand="block" onClick={submit}>Sign Up</IonButton>
       </IonCardContent>
     </IonCard>
   );
