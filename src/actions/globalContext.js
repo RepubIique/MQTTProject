@@ -9,6 +9,7 @@ const GlobalProvider = props => {
     firstname: "",
     lastname: "",
     email: "",
+    errors: true,
     cart: [],
     currentTab: "tab1"
   });
