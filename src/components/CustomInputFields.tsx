@@ -6,6 +6,9 @@ import {
 } from "@ionic/react";
 
 interface TextFieldType {
+    // Question mark before the variable means it is optional - can be undefined
+    // ?sampleVariable : string, 
+    // sampleVariable : any, 
     mandatory: boolean,
     fieldname: string,
     value: string,
