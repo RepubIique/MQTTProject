@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   IonContent,
   IonHeader,
@@ -9,7 +9,11 @@ import {
 import ExploreContainer from "../components/ExploreContainer";
 import "./Tab2.css";
 
+import { GlobalContext } from "../actions/globalContext";
+
 const Tab2: React.FC = () => {
+  const [state, setState] = useContext(GlobalContext);
+
   return (
     <IonPage>
       <IonHeader>
