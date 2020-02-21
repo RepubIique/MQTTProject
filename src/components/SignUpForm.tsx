@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "../actions/globalContext";
 import "./SignUpForm.css";
 import {
@@ -6,10 +6,6 @@ import {
   IonCard,
   IonCardContent,
   IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
-  IonIcon,
   IonItem,
   IonLabel,
   IonInput

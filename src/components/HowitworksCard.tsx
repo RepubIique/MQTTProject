@@ -3,10 +3,6 @@ import {
   IonButton,
   IonCard,
   IonCardContent,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonCardTitle,
-  IonContent,
   IonIcon,
   IonItem,
   IonLabel
