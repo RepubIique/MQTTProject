@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../actions/globalContext";
+import "./SignUpForm.css";
 import {
   IonButton,
   IonCard,
@@ -38,14 +39,14 @@ export const SignUpForm: React.FC = () => {
   const { username, email, password, lastname, firstname } = state;
 
   return (
-    <IonCard>
+    <IonCard className="card">
       <IonCardHeader>
         {/*<IonCardSubtitle>Card Subtitle</IonCardSubtitle>
       <IonCardTitle>Sign up</IonCardTitle>*/}
       </IonCardHeader>
       <IonCardContent>
         <IonItem>
-          <IonLabel position="stacked">
+          <IonLabel position="floating">
             Username{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
@@ -58,7 +59,7 @@ export const SignUpForm: React.FC = () => {
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">
+          <IonLabel position="floating">
             Password{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
@@ -71,7 +72,7 @@ export const SignUpForm: React.FC = () => {
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">
+          <IonLabel position="floating">
             First Name{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
@@ -84,7 +85,7 @@ export const SignUpForm: React.FC = () => {
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">
+          <IonLabel position="floating">
             Last Name{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
@@ -97,7 +98,7 @@ export const SignUpForm: React.FC = () => {
           ></IonInput>
         </IonItem>
         <IonItem>
-          <IonLabel position="stacked">
+          <IonLabel position="floating">
             Email{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
@@ -110,7 +111,7 @@ export const SignUpForm: React.FC = () => {
           ></IonInput>
         </IonItem>
         <section>
-          <IonButton expand="block" onClick={submit}>
+          <IonButton className="signUpButton" expand="block" onClick={submit}>
             Sign Up
           </IonButton>
         </section>

@@ -4,9 +4,10 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonIcon
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
+import { qrCodeOutline } from "ionicons/icons";
 import "./Tab1.css";
 import Card from "../components/Card";
 import Howitworks from "../components/HowitworksCard";
@@ -21,6 +22,7 @@ const Tab1: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>NanoBox</IonTitle>
+          <IonIcon icon={qrCodeOutline}></IonIcon>
         </IonToolbar>
       </IonHeader>
       <IonContent>

@@ -1,0 +1,13 @@
+.container {
+  height: 250px;
+  width: 150px;
+  float: left;
+}
+
+.button {
+  margin-top: 10px;
+}
+
+.productName {
+  font-size: 21px;
+}
