@@ -1,16 +1,13 @@
 import React, { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import {
-  IonApp,
   IonIcon,
   IonLabel,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs,
-  IonPage
 } from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
 import { personOutline, cartOutline, homeOutline } from "ionicons/icons";
 import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";

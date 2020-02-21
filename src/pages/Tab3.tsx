@@ -1,13 +1,5 @@
 import React, { useContext } from "react";
 import {
-  IonCard,
-  IonCardHeader,
-  IonCardSubtitle,
-  IonItem,
-  IonLabel,
-  IonInput,
-  IonCardContent,
-  IonCardTitle,
   IonContent,
   IonHeader,
   IonPage,
