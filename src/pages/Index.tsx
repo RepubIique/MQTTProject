@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { defineCustomElements } from "@ionic/pwa-elements/loader";
 import { Redirect, Route } from "react-router-dom";
 import {
   IonApp,
@@ -41,6 +42,7 @@ import { GlobalContext } from "../actions/globalContext";
 import GlobalActions from "../actions/globalActions";
 
 const Index: React.FC = () => {
+  defineCustomElements(window);
   const [state, setState] = useContext(GlobalContext);
   const { changeTabs } = GlobalActions();
   console.log("App", state);

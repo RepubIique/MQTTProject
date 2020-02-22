@@ -23,7 +23,7 @@ const Tab2: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent>
+      <IonContent className="productContainer">
         <ProductCard />
         <ProductCard />
         <ProductCard />

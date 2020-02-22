@@ -1,3 +1,8 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+
+.qrIcon {
+  float: right;
+  margin-right: 3px;
+}

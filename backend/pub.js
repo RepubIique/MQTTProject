@@ -23,7 +23,7 @@ client.on("connect", function() {
   client.subscribe("vendingmachine1/feedback", error => {
     if (error) console.error(error);
     else {
-      client.publish(topic, "2");
+      client.publish(topic, "1");
     }
   });
 });
