@@ -14,9 +14,6 @@ import "./Tab1.css";
 import Card from "../components/Card";
 import Howitworks from "../components/HowitworksCard";
 
-import Tab2 from "./Tab2";
-import Camera from "./Camera";
-
 import { GlobalContext } from "../actions/globalContext";
 
 const Tab1: React.FC = () => {

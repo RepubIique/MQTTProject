@@ -14,7 +14,7 @@ const Camera = () => {
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">QR SCAN</IonTitle>
+            <IonTitle size="large">Scan the QR code</IonTitle>
           </IonToolbar>
         </IonHeader>
         <QrScanner></QrScanner>
