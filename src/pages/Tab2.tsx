@@ -25,11 +25,6 @@ const Tab2: React.FC = () => {
 
       <IonContent className="productContainer">
         <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
       </IonContent>
     </IonPage>
   );

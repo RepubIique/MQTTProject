@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   IonButton,
   IonCard,
@@ -9,18 +9,41 @@ import {
   IonContent,
   IonIcon,
   IonItem,
-  IonLabel
+  IonLabel,
+  IonTitle
 } from "@ionic/react";
 import "./ProductCard.css";
+import ProductInfo from "./products.json";
 
-export const ProductCard: React.FC = () => (
-  <IonCard className="container">
-    <img src="https://via.placeholder.com/150"></img>
-    <IonCardTitle className="productName">Product Name</IonCardTitle>
-    <IonButton expand="block" fill="outline">
-      $3.20
-    </IonButton>
-  </IonCard>
-);
+class ProductCard extends Component {
+  render() {
+    return (
+      <div>
+        {ProductInfo.map(postDetail => {
+          return (
+            <IonCard className="container">
+              <img className="productImg" src={postDetail.image}></img>
+              <div className="priceName">
+                <IonCardTitle className="priceSize">
+                  ${postDetail.price}.00
+                </IonCardTitle>
+                <h4 className="productName">{postDetail.name}</h4>
+              </div>
+
+              <IonButton
+                color="medium"
+                size="default"
+                expand="block"
+                fill="outline"
+              >
+                + Add
+              </IonButton>
+            </IonCard>
+          );
+        })}
+      </div>
+    );
+  }
+}
 
 export default ProductCard;
