@@ -17,6 +17,7 @@ import Tab1 from "./Tab1";
 import Tab2 from "./Tab2";
 import Tab3 from "./Tab3";
 import Camera from "./Camera";
+import Cart from "./Cart";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -55,6 +56,7 @@ const Index: React.FC = () => {
         <Route path="/tab2" component={Tab2} exact={true} />
         <Route path="/tab3" component={Tab3} />
         <Route path="/camera" component={Camera} />
+        <Route path="/cart" component={Cart} />
         <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
