@@ -18,14 +18,9 @@ export const CardExample: React.FC = () => (
       <IonCardSubtitle>NanoBox</IonCardSubtitle>
       <IonCardTitle>Welcome !</IonCardTitle>
     </IonCardHeader>
-    {
-      <img src="https://images.unsplash.com/photo-1582032224511-d6a8a1d21c0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" />
-    }
+    <img src="./assets/LandingPage.png" />
 
-    <IonCardContent>
-      Keep close to Nature's heart... and break clear away, once in awhile, and
-      climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </IonCardContent>
+    <IonCardContent>Forget something ? Find it in our mini bar!</IonCardContent>
   </IonCard>
 );
 

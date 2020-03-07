@@ -5,4 +5,5 @@ ion-content ion-toolbar {
 .qrIcon {
   float: right;
   margin-right: 3px;
+  margin-top: 0px;
 }
