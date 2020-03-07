@@ -22,10 +22,6 @@ export const ProductCard: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
 
   const { addToCart } = CartActions();
-  console.log("state:");
-  console.log(state);
-  console.log("productinfo");
-  console.log(ProductInfo);
 
   return (
     <div>
@@ -39,7 +35,7 @@ export const ProductCard: React.FC = () => {
               </IonCardTitle>
               <h4 className="productName">{postDetail.name}</h4>
             </div>
-            {state.cart.find((e: any) => e === postDetail.id) ? (
+            {state.cart.find((e: any) => e === postDetail) ? (
               <IonButton
                 color="warning"
                 size="default"
