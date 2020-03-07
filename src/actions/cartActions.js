@@ -1,17 +1,18 @@
 import { useContext } from "react";
 import { GlobalContext } from "./globalContext";
+import { cart } from "ionicons/icons";
 
 const CartActions = () => {
   const [state, setState] = useContext(GlobalContext);
 
-  function onInputChange(data) {
-    setState(state => ({ ...state, cart: state.cart.push(data.value) }));
-    // setState(state => ({ ...state, [data.key]: data.value }));
-    console.log("cart", state);
+  function addToCart(data) {
+    let { cart } = state;
+    cart.push(data.id);
+    setState({ ...state, cart });
   }
 
   return {
-    onInputChange
+    addToCart
   };
 };
 

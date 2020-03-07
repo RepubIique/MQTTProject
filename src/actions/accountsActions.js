@@ -5,7 +5,7 @@ const AccountsActions = () => {
   const [state, setState] = useContext(GlobalContext);
 
   function onInputChange(data) {
-    setState(state => ({ ...state, [data.key]: data.value }));
+    setState({ ...state, [data.key]: data.value });
     console.log("acc", state);
   }
 

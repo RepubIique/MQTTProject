@@ -21,13 +21,13 @@ import CartActions from "../actions/cartActions";
 export const ProductCard: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
 
-  const { onInputChange } = CartActions();
+  const { addToCart } = CartActions();
 
   return (
     <div>
       {ProductInfo.map(postDetail => {
         return (
-          <IonCard className="container">
+          <IonCard className="container" key={postDetail.id}>
             <img className="productImg" src={postDetail.image}></img>
             <div className="priceName">
               <IonCardTitle className="priceSize">
@@ -42,7 +42,7 @@ export const ProductCard: React.FC = () => {
               expand="block"
               fill="outline"
               onClick={e => {
-                onInputChange({ value: postDetail.name });
+                addToCart(postDetail);
               }}
             >
               + Add
