@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useContext } from "react";
 import {
   IonButton,
   IonCard,
@@ -14,36 +14,44 @@ import {
 } from "@ionic/react";
 import "./ProductCard.css";
 import ProductInfo from "./products.json";
+import { GlobalContext } from "../actions/globalContext";
+import CartActions from "../actions/cartActions";
 
-class ProductCard extends Component {
-  render() {
-    return (
-      <div>
-        {ProductInfo.map(postDetail => {
-          return (
-            <IonCard className="container">
-              <img className="productImg" src={postDetail.image}></img>
-              <div className="priceName">
-                <IonCardTitle className="priceSize">
-                  ${postDetail.price}.00
-                </IonCardTitle>
-                <h4 className="productName">{postDetail.name}</h4>
-              </div>
+// class ProductCard extends Component {
+export const ProductCard: React.FC = () => {
+  const [state, setState] = useContext(GlobalContext);
 
-              <IonButton
-                color="medium"
-                size="default"
-                expand="block"
-                fill="outline"
-              >
-                + Add
-              </IonButton>
-            </IonCard>
-          );
-        })}
-      </div>
-    );
-  }
-}
+  const { onInputChange } = CartActions();
+
+  return (
+    <div>
+      {ProductInfo.map(postDetail => {
+        return (
+          <IonCard className="container">
+            <img className="productImg" src={postDetail.image}></img>
+            <div className="priceName">
+              <IonCardTitle className="priceSize">
+                ${postDetail.price}.00
+              </IonCardTitle>
+              <h4 className="productName">{postDetail.name}</h4>
+            </div>
+
+            <IonButton
+              color="medium"
+              size="default"
+              expand="block"
+              fill="outline"
+              onClick={e => {
+                onInputChange({ value: postDetail.name });
+              }}
+            >
+              + Add
+            </IonButton>
+          </IonCard>
+        );
+      })}
+    </div>
+  );
+};
 
 export default ProductCard;

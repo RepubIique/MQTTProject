@@ -16,8 +16,6 @@ import { cartOutline } from "ionicons/icons";
 import { GlobalContext } from "../actions/globalContext";
 
 const Tab2: React.FC = () => {
-  const [state, setState] = useContext(GlobalContext);
-
   return (
     <IonPage>
       <IonHeader>

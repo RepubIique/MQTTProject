@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   IonPage,
   IonBackButton,
@@ -13,8 +13,10 @@ import {
   IonInput,
   IonItemDivider
 } from "@ionic/react";
+import { GlobalContext } from "../actions/globalContext";
 
-const Cart = () => {
+const Cart: React.FC = () => {
+  const [state, setState] = useContext(GlobalContext);
   return (
     <IonPage>
       <IonHeader>
