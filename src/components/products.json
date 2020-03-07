@@ -3,54 +3,63 @@
     "id": 1,
     "name": "Travel Adaptor",
     "image": "https://emart.org.au/wp-content/uploads/1970/01/ax01-4charge-limited-edition-universal-travel-adapterr-500x500.jpeg",
-    "price": 15.0
+    "price": 15.0,
+    "added": true
   },
   {
     "id": 2,
     "name": "International Sim Card",
     "image": "https://www.visitbritainshop.com/australia/~/media/eaaa76b28b6f41368ccc3a5e4943e555.ashx?as=0&h=349&w=620",
-    "price": 20.0
+    "price": 20.0,
+    "added": false
   },
   {
     "id": 3,
     "name": "Couples Kit",
     "image": "https://cdn.shopify.com/s/files/1/0340/0569/products/coupleskit_hingedtin_logo_grande.jpg?v=1515095987",
-    "price": 10.0
+    "price": 10.0,
+    "added": false
   },
   {
     "id": 4,
     "name": "Foldable Bag 38L",
     "image": "https://s3-ap-southeast-2.amazonaws.com/wc-prod-pim/JPEG_1000x1000/BVFOLDUB38_bon_voyage_folding_duffle_38l.jpg",
-    "price": 17.0
+    "price": 17.0,
+    "added": false
   },
   {
     "id": 5,
     "name": "Earphones",
     "image": "https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/MTH62?wid=1144&hei=1144&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1549666006016",
-    "price": 25.0
+    "price": 25.0,
+    "added": false
   },
   {
     "id": 6,
     "name": "Soap Bar",
     "image": "https://d3r2zleywq7959.cloudfront.net/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/2/5/256455_xlarge_2.jpg",
-    "price": 8.0
+    "price": 8.0,
+    "added": false
   },
   {
     "id": 7,
     "name": "Toothbrush",
     "image": "https://www.kmart.com.au/wcsstore/Kmart/images/ncatalog/f/7/41460627-1-f.jpg",
-    "price": 2.0
+    "price": 2.0,
+    "added": false
   },
   {
     "id": 8,
     "name": "Toothpaste",
     "image": "https://www.bigw.com.au/medias/sys_master/images/images/ha6/h71/12389244534814.jpg",
-    "price": 4.0
+    "price": 4.0,
+    "added": false
   },
   {
     "id": 9,
     "name": "Battery",
     "image": "https://5.imimg.com/data5/NY/YE/MY-271021/energizer-aa-alkaline-battery-1-5v-500x500.jpg",
-    "price": 11.0
+    "price": 11.0,
+    "added": false
   }
 ]

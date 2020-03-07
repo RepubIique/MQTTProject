@@ -12,6 +12,7 @@ import ExploreContainer from "../components/ExploreContainer";
 import "./Tab2.css";
 import ProductCard from "../components/ProductCard";
 import { cartOutline } from "ionicons/icons";
+import { Link } from "react-router-dom";
 
 import { GlobalContext } from "../actions/globalContext";
 
@@ -21,9 +22,11 @@ const Tab2: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Product Page</IonTitle>
-          <IonButton className="cartIcon" href="/cart">
-            <IonIcon icon={cartOutline}></IonIcon>
-          </IonButton>
+          <Link to="/cart">
+            <IonButton className="cartIcon">
+              <IonIcon icon={cartOutline}></IonIcon>
+            </IonButton>
+          </Link>
         </IonToolbar>
       </IonHeader>
 

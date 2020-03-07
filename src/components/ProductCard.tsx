@@ -22,6 +22,10 @@ export const ProductCard: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
 
   const { addToCart } = CartActions();
+  console.log("state:");
+  console.log(state);
+  console.log("productinfo");
+  console.log(ProductInfo);
 
   return (
     <div>
@@ -35,18 +39,28 @@ export const ProductCard: React.FC = () => {
               </IonCardTitle>
               <h4 className="productName">{postDetail.name}</h4>
             </div>
-
-            <IonButton
-              color="medium"
-              size="default"
-              expand="block"
-              fill="outline"
-              onClick={e => {
-                addToCart(postDetail);
-              }}
-            >
-              + Add
-            </IonButton>
+            {state.cart.find((e: any) => e === postDetail.id) ? (
+              <IonButton
+                color="warning"
+                size="default"
+                expand="block"
+                fill="outline"
+              >
+                Added
+              </IonButton>
+            ) : (
+              <IonButton
+                color="medium"
+                size="default"
+                expand="block"
+                fill="outline"
+                onClick={e => {
+                  addToCart(postDetail);
+                }}
+              >
+                + Add
+              </IonButton>
+            )}
           </IonCard>
         );
       })}
