@@ -21,7 +21,7 @@ const Tab2: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>Product Page</IonTitle>
-          <IonButton href="/cart">
+          <IonButton className="cartIcon" href="/cart">
             <IonIcon icon={cartOutline}></IonIcon>
           </IonButton>
         </IonToolbar>
