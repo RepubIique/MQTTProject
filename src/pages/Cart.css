@@ -1,0 +1,13 @@
+.cartImg {
+  height: 70px;
+  width: 70px;
+}
+
+.deleteIcon {
+  float: right;
+}
+
+.textColumn {
+  text-align: center;
+  margin: auto;
+}

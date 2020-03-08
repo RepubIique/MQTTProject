@@ -16,9 +16,15 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
-  IonCardTitle
+  IonCardTitle,
+  IonRow,
+  IonCol,
+  IonButton,
+  IonIcon
 } from "@ionic/react";
 import { GlobalContext } from "../actions/globalContext";
+import "./Cart.css";
+import { closeCircleOutline } from "ionicons/icons";
 
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
@@ -33,33 +39,38 @@ const Cart: React.FC = () => {
           </IonButtons>
           <IonTitle>Nanobar</IonTitle>
         </IonToolbar>
+
         <IonItemDivider>
           <IonLabel>Cart</IonLabel>
         </IonItemDivider>
 
         {cart && cart.length > 0 ? (
-          <IonContent>
+          <div>
             {cart.map(function(x: any) {
               return (
                 <IonCard key={x.id}>
-                  <IonCardHeader>
-                    <IonCardSubtitle>{x.name}</IonCardSubtitle>
-                    <IonCardTitle></IonCardTitle>
-                  </IonCardHeader>
-                  <img src={x.image} />
-                  <IonCardContent>
-                    Some Description about the item
-                  </IonCardContent>
+                  <IonRow>
+                    <IonCol>
+                      <img className="cartImg" src={x.image} />
+                    </IonCol>
+                    <IonCol className="textColumn">
+                      <IonCardSubtitle>{x.name}</IonCardSubtitle>
+                      <IonCardSubtitle>${x.price}.00</IonCardSubtitle>
+                    </IonCol>
+                    <IonCol>
+                      <IonButton className="deleteIcon" color="danger">
+                        <IonIcon icon={closeCircleOutline}></IonIcon>
+                      </IonButton>
+                    </IonCol>
+                  </IonRow>
                 </IonCard>
               );
             })}
-          </IonContent>
+          </div>
         ) : (
-          <IonContent>
-            <IonCard>
-              <IonCardContent>No Items</IonCardContent>
-            </IonCard>
-          </IonContent>
+          <IonCard>
+            <IonCardContent>No Items</IonCardContent>
+          </IonCard>
         )}
 
         <IonItemDivider>
