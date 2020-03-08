@@ -25,12 +25,12 @@ import {
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
 import { closeCircleOutline } from "ionicons/icons";
-import CartRemove from "../actions/cartRemove";
+import CartActions from "../actions/cartActions";
 
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   let { cart } = state;
-  const { removeItem } = CartRemove();
+  const { removeItem } = CartActions();
   return (
     <IonPage>
       <IonHeader>

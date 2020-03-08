@@ -10,8 +10,18 @@ const CartActions = () => {
     setState({ ...state, cart });
   }
 
+  function removeItem(data) {
+    let { cart } = state;
+    let toRemove = data;
+    let filteredArray = cart.filter(function(item) {
+      return item.id !== toRemove;
+    });
+    setState({ ...state, cart: filteredArray });
+  }
+
   return {
-    addToCart
+    addToCart,
+    removeItem
   };
 };
 
