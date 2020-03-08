@@ -25,11 +25,12 @@ import {
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
 import { closeCircleOutline } from "ionicons/icons";
+import CartRemove from "../actions/cartRemove";
 
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   let { cart } = state;
-  let array = [1, 2, 3, 4];
+  const { removeItem } = CartRemove();
   return (
     <IonPage>
       <IonHeader>
@@ -58,7 +59,14 @@ const Cart: React.FC = () => {
                       <IonCardSubtitle>${x.price}.00</IonCardSubtitle>
                     </IonCol>
                     <IonCol>
-                      <IonButton className="deleteIcon" color="danger">
+                      <IonButton
+                        className="deleteIcon"
+                        color="danger"
+                        onClick={e => {
+                          console.log("onclick:" + x.id);
+                          removeItem(x.id);
+                        }}
+                      >
                         <IonIcon icon={closeCircleOutline}></IonIcon>
                       </IonButton>
                     </IonCol>
