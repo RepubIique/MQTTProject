@@ -20,7 +20,8 @@ import {
   IonRow,
   IonCol,
   IonButton,
-  IonIcon
+  IonIcon,
+  IonListHeader
 } from "@ionic/react";
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
@@ -40,10 +41,30 @@ const Cart: React.FC = () => {
           </IonButtons>
           <IonTitle>Nanobar</IonTitle>
         </IonToolbar>
-
-        <IonItemDivider>
-          <IonLabel>Cart</IonLabel>
-        </IonItemDivider>
+      </IonHeader>
+      <IonContent>
+        <IonCardSubtitle>
+          <IonRow>
+            <IonCol>
+              <IonLabel>Cart</IonLabel>
+            </IonCol>
+            <IonCol>
+              {cart && cart.length > 0 ? (
+                <div>
+                  {cart.map(function(y: any) {
+                    return (
+                      <IonLabel className="totalPrice">
+                        Total: ${y.price}.00
+                      </IonLabel>
+                    );
+                  })}
+                </div>
+              ) : (
+                <IonLabel className="totalPrice">Cart Empty</IonLabel>
+              )}
+            </IonCol>
+          </IonRow>
+        </IonCardSubtitle>
 
         {cart && cart.length > 0 ? (
           <div>
@@ -63,7 +84,6 @@ const Cart: React.FC = () => {
                         className="deleteIcon"
                         color="danger"
                         onClick={e => {
-                          console.log("onclick:" + x.id);
                           removeItem(x.id);
                         }}
                       >
@@ -80,10 +100,10 @@ const Cart: React.FC = () => {
             <IonCardContent>No Items</IonCardContent>
           </IonCard>
         )}
-
         <IonItemDivider>
           <IonLabel>Pay With Card</IonLabel>
         </IonItemDivider>
+
         <IonItem>
           <IonLabel position="stacked">Name</IonLabel>
           <IonInput placeholder="Name on Card"></IonInput>
@@ -98,7 +118,7 @@ const Cart: React.FC = () => {
           <IonInput placeholder="MM/YY"></IonInput>
           <IonInput placeholder="CVC"></IonInput>
         </IonItem>
-      </IonHeader>
+      </IonContent>
     </IonPage>
   );
 };

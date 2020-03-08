@@ -11,3 +11,7 @@
   text-align: center;
   margin: auto;
 }
+
+.totalPrice {
+  float: right;
+}

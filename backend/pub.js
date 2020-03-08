@@ -1,6 +1,6 @@
 let mqtt = require("mqtt");
 
-let topic = "vendingmachine1/command";
+let topic = "vendingmachine2/command";
 
 const options = {
   port: 16987,
