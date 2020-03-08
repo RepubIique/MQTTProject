@@ -6,7 +6,7 @@ const CartRemove = () => {
 
   function removeItem(data) {
     let { cart } = state;
-    let toRemove = data.id;
+    let toRemove = data;
     let filteredArray = cart.filter(function(item) {
       return item.id !== toRemove;
     });
