@@ -12,6 +12,8 @@
     "@ionic/react": "^5.0.0",
     "@ionic/react-hooks": "0.0.6",
     "@ionic/react-router": "^5.0.0",
+    "@stripe/react-stripe-js": "^1.0.3",
+    "@stripe/stripe-js": "^1.0.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^8.0.3",
@@ -33,6 +35,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
+    "stripe": "^8.29.0",
     "typescript": "3.7.4"
   },
   "scripts": {

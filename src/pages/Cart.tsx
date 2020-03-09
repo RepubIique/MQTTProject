@@ -28,6 +28,13 @@ import "./Cart.css";
 import { closeCircleOutline } from "ionicons/icons";
 import CartActions from "../actions/cartActions";
 
+// Stripe Stuff
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import CheckoutForm from "../components/StripeCheckoutForm";
+
+const stripePromise = loadStripe("pk_test_nLp0TNh4V272938r4hYeX36U00Li5S8Vpr");
+
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   let { cart } = state;
@@ -104,7 +111,7 @@ const Cart: React.FC = () => {
           <IonLabel>Pay With Card</IonLabel>
         </IonItemDivider>
 
-        <IonItem>
+        {/* <IonItem>
           <IonLabel position="stacked">Name</IonLabel>
           <IonInput placeholder="Name on Card"></IonInput>
         </IonItem>
@@ -117,7 +124,11 @@ const Cart: React.FC = () => {
           <IonInput placeholder="xxxx-xxxx-xxxx-xxxx"></IonInput>
           <IonInput placeholder="MM/YY"></IonInput>
           <IonInput placeholder="CVC"></IonInput>
-        </IonItem>
+        </IonItem> */}
+
+        <Elements stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
       </IonContent>
     </IonPage>
   );
