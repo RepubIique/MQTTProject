@@ -4,11 +4,7 @@ const GlobalContext = React.createContext();
 
 const GlobalProvider = props => {
   const [state, setState] = useState({
-    username: "",
-    password: "",
-    firstname: "",
-    lastname: "",
-    email: "",
+    currentuser: null,
     cart: [],
     currentTab: ""
   });

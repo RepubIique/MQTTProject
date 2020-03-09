@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { GlobalContext } from "../actions/globalContext";
-import "./SignUpForm.css";
+import "./LoginForm.css";
 import {
   IonButton,
   IonCard,
@@ -14,19 +14,15 @@ import {
   IonLabel,
   IonInput
 } from "@ionic/react";
-
 import { getUsers, login } from "../actions/accounts";
-
 import AccountsActions from "../actions/accountsActions";
+import { isEmpty } from "../util";
 
-export const SignUpForm: React.FC = () => {
+export const LoginForm: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   const [form, setForm] = useState({
     username: "",
-    password: "",
-    firstname: "",
-    lastname: "",
-    email: ""
+    password: ""
   });
 
   const onInputChange = (obj: any) => {
@@ -34,14 +30,13 @@ export const SignUpForm: React.FC = () => {
   };
 
   const submit = async () => {
-    console.log("Form", form);
     const data = await login({ username, password });
-    if (data) {
-      console.log(data);
+    if (data && !isEmpty(data.results)) {
+      setState({ ...state, currentuser: data.results });
     }
   };
 
-  const { username, email, password, lastname, firstname } = form;
+  const { username, password } = form;
 
   return (
     <IonCard className="card">
@@ -70,45 +65,9 @@ export const SignUpForm: React.FC = () => {
             required
           ></IonInput>
         </IonItem>
-        <IonItem>
-          <IonLabel position="floating">
-            First Name{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={firstname}
-            onIonChange={e => {
-              onInputChange({ key: "firstname", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">
-            Last Name{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={lastname}
-            onIonChange={e => {
-              onInputChange({ key: "lastname", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
-        <IonItem>
-          <IonLabel position="floating">
-            Email{<span style={{ color: "red" }}> * </span>}
-          </IonLabel>
-          <IonInput
-            value={email}
-            onIonChange={e => {
-              onInputChange({ key: "email", value: e.detail.value });
-            }}
-            required
-          ></IonInput>
-        </IonItem>
         <section>
-          <IonButton className="signUpButton" expand="block" onClick={submit}>
-            Sign Up
+          <IonButton className="loginButton" expand="block" onClick={submit}>
+            Login
           </IonButton>
         </section>
       </IonCardContent>
@@ -116,4 +75,4 @@ export const SignUpForm: React.FC = () => {
   );
 };
 
-export default SignUpForm;
+export default LoginForm;
