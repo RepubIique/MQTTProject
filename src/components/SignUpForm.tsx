@@ -14,10 +14,9 @@ import {
   IonLabel,
   IonInput
 } from "@ionic/react";
-
-import { getUsers, login } from "../actions/accounts";
-
+import { getUsers, createUser } from "../actions/accounts";
 import AccountsActions from "../actions/accountsActions";
+import { isEmpty } from "../util";
 
 export const SignUpForm: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
@@ -34,10 +33,15 @@ export const SignUpForm: React.FC = () => {
   };
 
   const submit = async () => {
-    console.log("Form", form);
-    const data = await login({ username, password });
-    if (data) {
-      console.log(data);
+    const data = await createUser({
+      username,
+      password,
+      firstname,
+      lastname,
+      email
+    });
+    if (data && !isEmpty(data.results)) {
+      setState({ ...state, currentuser: data.results });
     }
   };
 
