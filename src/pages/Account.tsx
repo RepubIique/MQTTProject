@@ -16,11 +16,11 @@ import {
 } from "@ionic/react";
 import SignUpForm from "../components/SignUpForm";
 
-import "./Tab3.css";
+import "./Account.css";
 
 import { GlobalContext } from "../actions/globalContext";
 
-const Tab3: React.FC = () => {
+const Account: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
 
   return (
@@ -37,4 +37,4 @@ const Tab3: React.FC = () => {
   );
 };
 
-export default Tab3;
+export default Account;

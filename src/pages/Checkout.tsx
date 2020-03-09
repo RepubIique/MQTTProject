@@ -9,14 +9,14 @@ import {
   IonIcon
 } from "@ionic/react";
 import ExploreContainer from "../components/ExploreContainer";
-import "./Tab2.css";
+import "./Checkout.css";
 import ProductCard from "../components/ProductCard";
 import { cartOutline } from "ionicons/icons";
 import { Link } from "react-router-dom";
 
 import { GlobalContext } from "../actions/globalContext";
 
-const Tab2: React.FC = () => {
+const Checkout: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -37,4 +37,4 @@ const Tab2: React.FC = () => {
   );
 };
 
-export default Tab2;
+export default Checkout;

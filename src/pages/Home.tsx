@@ -10,13 +10,13 @@ import {
   IonButton
 } from "@ionic/react";
 import { qrCodeSharp } from "ionicons/icons";
-import "./Tab1.css";
+import "./Home.css";
 import Card from "../components/Card";
 import Howitworks from "../components/HowitworksCard";
 
 import { GlobalContext } from "../actions/globalContext";
 
-const Tab1: React.FC = () => {
+const Home: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
 
   return (
@@ -37,4 +37,4 @@ const Tab1: React.FC = () => {
   );
 };
 
-export default Tab1;
+export default Home;

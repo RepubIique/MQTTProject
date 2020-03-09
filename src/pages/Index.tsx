@@ -13,9 +13,9 @@ import {
 } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 import { personOutline, cartOutline, homeOutline } from "ionicons/icons";
-import Tab1 from "./Tab1";
-import Tab2 from "./Tab2";
-import Tab3 from "./Tab3";
+import Home from "./Home";
+import Checkout from "./Checkout";
+import Account from "./Account";
 import Camera from "./Camera";
 import Cart from "./Cart";
 
@@ -52,34 +52,34 @@ const Index: React.FC = () => {
   return (
     <IonTabs>
       <IonRouterOutlet>
-        <Route path="/tab1" component={Tab1} exact={true} />
-        <Route path="/tab2" component={Tab2} exact={true} />
-        <Route path="/tab3" component={Tab3} />
+        <Route path="/home" component={Home} exact={true} />
+        <Route path="/checkout" component={Checkout} exact={true} />
+        <Route path="/account" component={Account} />
         <Route path="/camera" component={Camera} />
         <Route path="/cart" component={Cart} />
-        <Route path="/" render={() => <Redirect to="/tab1" />} exact={true} />
+        <Route path="/" render={() => <Redirect to="/home" />} exact={true} />
       </IonRouterOutlet>
       <IonTabBar slot="bottom">
         <IonTabButton
-          tab="tab1"
-          href="/tab1"
-          onClick={() => changeTabs("tab1")}
+          tab="home"
+          href="/home"
+          onClick={() => changeTabs("home")}
         >
           <IonIcon icon={homeOutline} />
           <IonLabel>Home</IonLabel>
         </IonTabButton>
         <IonTabButton
-          tab="tab2"
-          href="/tab2"
-          onClick={() => changeTabs("tab2")}
+          tab="checkout"
+          href="/checkout"
+          onClick={() => changeTabs("checkout")}
         >
           <IonIcon icon={cartOutline} />
           <IonLabel>Checkout</IonLabel>
         </IonTabButton>
         <IonTabButton
-          tab="tab3"
-          href="/tab3"
-          onClick={() => changeTabs("tab3")}
+          tab="account"
+          href="/account"
+          onClick={() => changeTabs("account")}
         >
           <IonIcon icon={personOutline} />
           <IonLabel>Account</IonLabel>
