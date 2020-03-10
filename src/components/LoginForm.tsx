@@ -14,7 +14,7 @@ import {
   IonLabel,
   IonInput
 } from "@ionic/react";
-import { getUsers, login } from "../actions/accounts";
+import { getUsers, login } from "../actions/api/accounts";
 import AccountsActions from "../actions/accountsActions";
 import { isEmpty } from "../util";
 

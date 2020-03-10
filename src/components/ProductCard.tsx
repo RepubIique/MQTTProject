@@ -1,4 +1,4 @@
-import React, { Component, useState, useContext } from "react";
+import React, { Component, useState, useContext, useEffect } from "react";
 import {
   IonButton,
   IonCard,
@@ -10,32 +10,51 @@ import {
   IonIcon,
   IonItem,
   IonLabel,
-  IonTitle
+  IonTitle,
+  useIonViewWillEnter,
+  useIonViewDidEnter
 } from "@ionic/react";
 import "./ProductCard.css";
-import ProductInfo from "./products.json";
 import { GlobalContext } from "../actions/globalContext";
 import CartActions from "../actions/cartActions";
+import { getAllProducts } from "../actions/api/products";
 
-// class ProductCard extends Component {
+interface Product {
+  id: number;
+  name: string;
+  image_url: string;
+  price: number;
+}
+
 export const ProductCard: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
-
+  const [products, setProducts] = useState<Product[]>([]);
   const { addToCart } = CartActions();
+
+  useIonViewDidEnter(() => {
+    getProductInfo();
+  });
+
+  const getProductInfo = async () => {
+    const data = await getAllProducts();
+    if (data) {
+      setProducts(data);
+    }
+  };
 
   return (
     <div>
-      {ProductInfo.map(postDetail => {
+      {products!.map(product => {
         return (
-          <IonCard className="container" key={postDetail.id}>
-            <img className="productImg" src={postDetail.image}></img>
+          <IonCard className="container" key={product.id}>
+            <img className="productImg" src={product.image_url}></img>
             <div className="priceName">
               <IonCardTitle className="priceSize">
-                ${postDetail.price}.00
+                ${product.price}.00
               </IonCardTitle>
-              <h4 className="productName">{postDetail.name}</h4>
+              <h4 className="productName">{product.name}</h4>
             </div>
-            {state.cart.find((e: any) => e === postDetail) ? (
+            {state.cart.find((e: any) => e === product) ? (
               <IonButton
                 color="warning"
                 size="default"
@@ -51,7 +70,7 @@ export const ProductCard: React.FC = () => {
                 expand="block"
                 fill="outline"
                 onClick={e => {
-                  addToCart(postDetail);
+                  addToCart(product);
                 }}
               >
                 + Add

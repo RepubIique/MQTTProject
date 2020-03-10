@@ -60,7 +60,7 @@ const Cart: React.FC = () => {
                 <div>
                   {cart.map(function(y: any) {
                     return (
-                      <IonLabel className="totalPrice">
+                      <IonLabel className="totalPrice" key={y.id}>
                         Total: ${y.price}.00
                       </IonLabel>
                     );
@@ -80,7 +80,7 @@ const Cart: React.FC = () => {
                 <IonCard key={x.id}>
                   <IonRow>
                     <IonCol>
-                      <img className="cartImg" src={x.image} />
+                      <img className="cartImg" src={x.image_url} />
                     </IonCol>
                     <IonCol className="textColumn">
                       <IonCardSubtitle>{x.name}</IonCardSubtitle>

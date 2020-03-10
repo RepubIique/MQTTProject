@@ -14,8 +14,7 @@ import {
   IonLabel,
   IonInput
 } from "@ionic/react";
-import { getUsers, createUser } from "../actions/accounts";
-import AccountsActions from "../actions/accountsActions";
+import { getUsers, createUser } from "../actions/api/accounts";
 import { isEmpty } from "../util";
 
 export const SignUpForm: React.FC = () => {
