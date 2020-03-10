@@ -5,11 +5,17 @@ const GlobalActions = () => {
   const [state, setState] = useContext(GlobalContext);
 
   function changeTabs(tab) {
-    setState(state => ({ ...state, currentTab: tab }));
+    setState(() => ({ ...state, currentTab: tab }));
+  }
+
+  function toggleShowLoginAlert() {
+    let { showLoginAlert } = state;
+    setState(() => ({ ...state, showLoginAlert: !showLoginAlert }));
   }
 
   return {
-    changeTabs
+    changeTabs,
+    toggleShowLoginAlert
   };
 };
 

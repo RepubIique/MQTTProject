@@ -37,8 +37,9 @@ const stripePromise = loadStripe("pk_test_nLp0TNh4V272938r4hYeX36U00Li5S8Vpr");
 
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
-  let { cart } = state;
   const { removeItem } = CartActions();
+  const { cart } = state;
+
   return (
     <IonPage>
       <IonHeader>

@@ -6,7 +6,8 @@ const GlobalProvider = props => {
   const [state, setState] = useState({
     currentuser: null,
     cart: [],
-    currentTab: ""
+    currentTab: "",
+    showLoginAlert: false
   });
 
   return (

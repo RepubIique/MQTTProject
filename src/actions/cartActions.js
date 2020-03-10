@@ -5,9 +5,13 @@ const CartActions = () => {
   const [state, setState] = useContext(GlobalContext);
 
   function addToCart(data) {
-    let { cart } = state;
-    cart.push(data);
-    setState({ ...state, cart });
+    let { currentuser, cart } = state;
+    if (currentuser) {
+      cart.push(data);
+      setState({ ...state, cart });
+    } else {
+      setState({ ...state, showLoginAlert: true });
+    }
   }
 
   function removeItem(data) {
