@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { IonButton, IonCard, IonCardContent } from "@ionic/react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { stripePaymentMethodHandler } from "../actions/api/payment";
-import CardSection from "./StripeCardSection";
+import CardSection from "./StripePayCard";
 import { GlobalContext } from "../actions/globalContext";
 import GlobalActions from "../actions/globalActions";
 import CartActions from "../actions/cartActions";
