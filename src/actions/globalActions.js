@@ -13,9 +13,15 @@ const GlobalActions = () => {
     setState(() => ({ ...state, showLoginAlert: !showLoginAlert }));
   }
 
+  function toggleShowPaymentLoading() {
+    let { showPaymentLoading } = state;
+    setState(() => ({ ...state, showPaymentLoading: !showPaymentLoading }));
+  }
+
   return {
     changeTabs,
-    toggleShowLoginAlert
+    toggleShowLoginAlert,
+    toggleShowPaymentLoading
   };
 };
 

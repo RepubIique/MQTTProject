@@ -21,7 +21,7 @@ import {
   IonCol,
   IonButton,
   IonIcon,
-  IonListHeader
+  IonSpinner
 } from "@ionic/react";
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
@@ -38,7 +38,7 @@ const stripePromise = loadStripe("pk_test_nLp0TNh4V272938r4hYeX36U00Li5S8Vpr");
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   const { removeItem } = CartActions();
-  const { cart } = state;
+  const { cart, showPaymentLoading } = state;
 
   return (
     <IonPage>
@@ -51,28 +51,26 @@ const Cart: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCardSubtitle>
-          <IonRow>
-            <IonCol>
-              <IonLabel>Cart</IonLabel>
-            </IonCol>
-            <IonCol>
-              {cart && cart.length > 0 ? (
-                <div>
-                  {cart.map(function(y: any) {
-                    return (
-                      <IonLabel className="totalPrice" key={y.id}>
-                        Total: ${y.price}.00
-                      </IonLabel>
-                    );
-                  })}
-                </div>
-              ) : (
-                <IonLabel className="totalPrice">Cart Empty</IonLabel>
-              )}
-            </IonCol>
-          </IonRow>
-        </IonCardSubtitle>
+        <IonItemDivider>
+          <IonLabel>Cart</IonLabel>
+        </IonItemDivider>
+        <IonRow>
+          <IonCol>
+            {cart && cart.length > 0 ? (
+              <div>
+                {cart.map(function(y: any) {
+                  return (
+                    <IonLabel className="totalPrice" key={y.id}>
+                      Total: ${y.price}.00
+                    </IonLabel>
+                  );
+                })}
+              </div>
+            ) : (
+              ""
+            )}
+          </IonCol>
+        </IonRow>
 
         {cart && cart.length > 0 ? (
           <div>
@@ -112,6 +110,10 @@ const Cart: React.FC = () => {
           <IonLabel>Pay With Card</IonLabel>
         </IonItemDivider>
 
+        {/* {!showPaymentLoading ? (
+                  ) : (
+                    <IonSpinner name="crescent" />
+                  )} */}
         <Elements stripe={stripePromise}>
           <StripeCheckoutForm />
         </Elements>

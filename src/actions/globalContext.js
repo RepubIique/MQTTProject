@@ -7,7 +7,8 @@ const GlobalProvider = props => {
     currentuser: null,
     cart: [],
     currentTab: "",
-    showLoginAlert: false
+    showLoginAlert: false,
+    showPaymentLoading: false
   });
 
   return (

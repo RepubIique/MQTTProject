@@ -1,8 +1,11 @@
+import React, { useContext, useState } from "react";
 import { fetcher } from "./index";
+
 const stripe = require("stripe")("sk_test_cupKvj0K2Ty0I3ZVar0Vk5PN00ioJfhbWc");
 
 export const stripePaymentMethodHandler = async result => {
   console.log("StripePaymentHandler called");
+  let obj = null;
   if (result.error) {
     // Show error in payment form
   } else {
@@ -18,23 +21,26 @@ export const stripePaymentMethodHandler = async result => {
       .catch(err => console.log("Error", err));
 
     // Handle server response (see Step 4)
-    handleServerResponse(paymentResponse);
+    obj = handleServerResponse(paymentResponse);
   }
+  return obj;
 };
 
 export const handleServerResponse = async response => {
   console.log("handleServerResponse called");
   console.log("Payment response", response);
   if (response.error) {
-    // Show error from server on payment form
+    return { msg: "Error", error: response.error };
   } else if (response.requires_action) {
     // Use Stripe.js to handle the required card action
+
+    // stripe.handleCardAction return type error is not a function
     const { error: errorAction, paymentIntent } = await stripe.handleCardAction(
       response.payment_intent_client_secret
     );
 
     if (errorAction) {
-      // Show error from Stripe.js in payment form
+      return { msg: "Error@Authentication", error: errorAction };
     } else {
       // The card action has been handled
       // The PaymentIntent can be confirmed again on the server
@@ -51,6 +57,6 @@ export const handleServerResponse = async response => {
       handleServerResponse(await serverResponse.json());
     }
   } else {
-    // Show success message
+    return { msg: "Payment successful", error: null, response };
   }
 };
