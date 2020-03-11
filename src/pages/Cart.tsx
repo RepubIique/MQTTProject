@@ -21,12 +21,14 @@ import {
   IonCol,
   IonButton,
   IonIcon,
-  IonSpinner
+  IonSpinner,
+  IonAlert
 } from "@ionic/react";
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
 import { closeCircleOutline } from "ionicons/icons";
 import CartActions from "../actions/cartActions";
+import GlobalActions from "../actions/globalActions";
 
 // Stripe Stuff
 import { Elements } from "@stripe/react-stripe-js";
@@ -38,7 +40,8 @@ const stripePromise = loadStripe("pk_test_nLp0TNh4V272938r4hYeX36U00Li5S8Vpr");
 const Cart: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
   const { removeItem } = CartActions();
-  const { cart, showPaymentLoading } = state;
+  const { toggleShowPaymentAlert } = GlobalActions();
+  const { cart, showPaymentLoading, showPaymentAlert, paymentSuccess } = state;
 
   return (
     <IonPage>
@@ -51,6 +54,20 @@ const Cart: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
+        <IonAlert
+          isOpen={showPaymentAlert}
+          onDidDismiss={() => {
+            toggleShowPaymentAlert();
+          }}
+          header={"Payment Status"}
+          subHeader={
+            paymentSuccess
+              ? "Your payment of $100 is successfull"
+              : "Payment has failed. Please try again."
+          }
+          message={""}
+          buttons={["OK"]}
+        />
         <IonItemDivider>
           <IonLabel>Cart</IonLabel>
         </IonItemDivider>

@@ -5,9 +5,15 @@ import { stripePaymentMethodHandler } from "../actions/api/payment";
 import CardSection from "./StripeCardSection";
 import { GlobalContext } from "../actions/globalContext";
 import GlobalActions from "../actions/globalActions";
+import CartActions from "../actions/cartActions";
 
 export default function CheckoutForm() {
-  const { toggleShowPaymentLoading } = GlobalActions();
+  const {
+    toggleShowPaymentLoading,
+    toggleShowPaymentAlert,
+    changePaymentStatus
+  } = GlobalActions();
+  const { clearCart } = CartActions();
   const [state, setState] = useContext(GlobalContext);
 
   const stripe = useStripe();
@@ -15,7 +21,7 @@ export default function CheckoutForm() {
 
   const handleSubmit = async event => {
     event.preventDefault();
-    toggleShowPaymentLoading();
+    //toggleShowPaymentLoading();
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
@@ -33,7 +39,11 @@ export default function CheckoutForm() {
     });
 
     stripePaymentMethodHandler(result).then(res => {
-      if (!res.error) {
+      console.log(res);
+      if (res.error === null) {
+        toggleShowPaymentAlert(true);
+      } else {
+        toggleShowPaymentAlert(false);
       }
     });
   };

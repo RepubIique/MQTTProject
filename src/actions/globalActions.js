@@ -18,10 +18,20 @@ const GlobalActions = () => {
     setState(() => ({ ...state, showPaymentLoading: !showPaymentLoading }));
   }
 
+  function toggleShowPaymentAlert(x = false) {
+    let { showPaymentAlert } = state;
+    setState(() => ({
+      ...state,
+      showPaymentAlert: !showPaymentAlert,
+      paymentSuccess: x
+    }));
+  }
+
   return {
     changeTabs,
     toggleShowLoginAlert,
-    toggleShowPaymentLoading
+    toggleShowPaymentLoading,
+    toggleShowPaymentAlert
   };
 };
 

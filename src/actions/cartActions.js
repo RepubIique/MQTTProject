@@ -23,9 +23,14 @@ const CartActions = () => {
     setState({ ...state, cart: filteredArray });
   }
 
+  function clearCart() {
+    setState({ ...state, cart: [] });
+  }
+
   return {
     addToCart,
-    removeItem
+    removeItem,
+    clearCart
   };
 };
 
