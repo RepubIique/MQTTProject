@@ -1,59 +1,44 @@
 import React from "react";
-import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
-
+import { Elements, CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import axios from "axios";
 import CardSection from "./StripePayCard";
 import CLIENTSECRET from "./stripe";
 
-class CheckoutForm extends React.Component {
-  handleSubmit = async event => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
-
-    const { stripe, elements } = this.props;
-
-    if (!stripe || !elements) {
-      // Stripe.js has not yet loaded.
-      // Make  sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
-    const result = await stripe.confirmCardPayment(
-      "pi_1GLAVxC6jkVKarGSMA7BpIjL_secret_9ikjpftY67SfF6WYM1Mu5HMNA",
-      {
-        payment_method: {
-          card: elements.getElement(CardElement),
-          billing_details: {
-            name: "Jenny Rosen"
-          }
+const CheckoutForm = ({ success }) => {
+    const stripe = useStripe();
+    const elements = useElements();
+  
+    const handleSubmit = async event => {
+      event.preventDefault();
+  
+      const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: "card",
+        card: elements.getElement(CardElement)
+      });
+  
+      if (!error) {
+        const { id } = paymentMethod;
+  
+        try {
+          const { data } = await axios.post("/api/charge", { id, amount: 1099 });
+          console.log(data);
+          success();
+        } catch (error) {
+          console.log(error);
         }
       }
-    );
-
-    if (result.error) {
-      // Show error to your customer (e.g., insufficient funds)
-      console.log(result.error.message);
-    } else {
-      // The payment has been processed!
-      if (result.paymentIntent.status === "succeeded") {
-        console.log(result);
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
+      render() 
+        return (
+          <form onSubmit={handleSubmit}>
+            <CardSection />
+            <button disabled={!this.props.stripe}>Confirm order</button>
+          </form>
+        );
       }
-    }
-  };
+    };
+  
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <CardSection />
-        <button disabled={!this.props.stripe}>Confirm order</button>
-      </form>
-    );
-  }
+ 
 }
 
 export default function InjectedCheckoutForm() {
