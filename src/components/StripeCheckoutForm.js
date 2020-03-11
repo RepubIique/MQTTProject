@@ -2,6 +2,7 @@ import React from "react";
 import { ElementsConsumer, CardElement } from "@stripe/react-stripe-js";
 
 import CardSection from "./StripePayCard";
+import CLIENTSECRET from "./stripe";
 
 class CheckoutForm extends React.Component {
   handleSubmit = async event => {
@@ -18,7 +19,7 @@ class CheckoutForm extends React.Component {
     }
 
     const result = await stripe.confirmCardPayment(
-      "pi_1GLAS8C6jkVKarGSLUQkEU8f_secret_BziKBTKHgPFMFVZ4K9SSZ0XlL",
+      "pi_1GLAVxC6jkVKarGSMA7BpIjL_secret_9ikjpftY67SfF6WYM1Mu5HMNA",
       {
         payment_method: {
           card: elements.getElement(CardElement),
@@ -35,6 +36,7 @@ class CheckoutForm extends React.Component {
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === "succeeded") {
+        console.log(result);
         // Show a success message to your customer
         // There's a risk of the customer closing the window before callback
         // execution. Set up a webhook or plugin to listen for the
