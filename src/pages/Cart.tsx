@@ -31,7 +31,7 @@ import CartActions from "../actions/cartActions";
 // Stripe Stuff
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import CheckoutForm from "../components/StripeCheckoutForm";
+import StripeCheckoutForm from "../components/StripeCheckoutForm";
 
 const stripePromise = loadStripe("pk_test_nLp0TNh4V272938r4hYeX36U00Li5S8Vpr");
 
@@ -113,7 +113,7 @@ const Cart: React.FC = () => {
         </IonItemDivider>
 
         <Elements stripe={stripePromise}>
-          <CheckoutForm />
+          <StripeCheckoutForm />
         </Elements>
       </IonContent>
     </IonPage>
