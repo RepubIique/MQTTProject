@@ -1,60 +1,42 @@
 import React from "react";
-import {
-  Elements,
-  CardElement,
-  useStripe,
-  useElements,
-  ElementsConsumer
-} from "@stripe/react-stripe-js";
-import axios from "axios";
-import CardSection from "./StripePayCard";
-import CLIENTSECRET from "./stripe";
-import { render } from "@testing-library/react";
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { stripePaymentMethodHandler } from "../actions/api/payment";
 
-const StripeCheckoutForm = () => {
+import CardSection from "./StripeCardSection";
+
+export default function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
 
   const handleSubmit = async event => {
+    // We don't want to let default form submission happen here,
+    // which would refresh the page.
     event.preventDefault();
 
     if (!stripe || !elements) {
-      // Stripe.js has not loaded yet. Make sure to disable
-      // form submission until Stripe.js has loaded.
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
 
-    const cardElement = elements.getElement(CardElement);
-
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
+    const result = await stripe.createPaymentMethod({
       type: "card",
-      card: cardElement
+      card: elements.getElement(CardElement),
+      billing_details: {
+        // Include any additional collected billing details.
+        name: "Jenny Rosen"
+      }
     });
 
-    if (error) {
-      console.log("[error]", error);
-    } else {
-      console.log("[PaymentMethod]", paymentMethod);
-    }
+    stripePaymentMethodHandler(result);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <CardElement />
+      <CardSection />
       <button type="submit" disabled={!stripe}>
-        Pay
+        Submit Payment
       </button>
     </form>
   );
-};
-
-export default StripeCheckoutForm;
-// export default function InjectedCheckoutForm() {
-//   return (
-//     <ElementsConsumer>
-//       {({ stripe, elements }) => (
-//         <CheckoutForm stripe={stripe} elements={elements} />
-//       )}
-//     </ElementsConsumer>
-//   );
-// }
+}
