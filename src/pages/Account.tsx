@@ -26,6 +26,7 @@ import SignUpForm from "../components/SignUpForm";
 import LoginForm from "../components/LoginForm";
 
 import "./Account.css";
+import "../components/ProductCard.css";
 
 import { GlobalContext } from "../actions/globalContext";
 import { getOrdersByUserId } from "../actions/api/products";
@@ -35,13 +36,13 @@ const Account: React.FC = () => {
 
   const [selectedSegment, setSegment] = useState("signup");
 
-  const { currentuser } = state;
+  const { currentuser, orderHistory } = state;
 
   const getOrders = async () => {
     let { id } = currentuser;
     const data = await getOrdersByUserId({ id });
     if (data) {
-      console.log("Order history", data);
+      setState({ ...state, orderHistory: data.results });
     }
   };
 
@@ -112,13 +113,19 @@ const Account: React.FC = () => {
           <IonItemDivider>
             <IonLabel>Order History</IonLabel>
           </IonItemDivider>
-          <IonCard className="card">
-            <IonCardContent>
-              <IonCardSubtitle>{`Welcome, ${currentuser.first_name +
-                ` ` +
-                currentuser.last_name}`}</IonCardSubtitle>
-            </IonCardContent>
-          </IonCard>
+          {orderHistory.map((x: any) => (
+            <IonCard className="card">
+              <IonCardContent>
+                <img className="productImg" src={x.image_url}></img>
+                <div className="priceName">
+                  <IonCardTitle className="priceSize">
+                    ${x.price.toFixed(2)}
+                  </IonCardTitle>
+                  <h4 className="productName">{x.name}</h4>
+                </div>
+              </IonCardContent>
+            </IonCard>
+          ))}
         </IonContent>
       )}
     </IonPage>

@@ -10,7 +10,8 @@ const GlobalProvider = props => {
     showLoginAlert: false,
     showPaymentLoading: false,
     paymentSuccess: false,
-    showPaymentAlert: false
+    showPaymentAlert: false,
+    orderHistory: []
   });
 
   return (
