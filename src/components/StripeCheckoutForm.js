@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { IonButton, IonCard, IonCardContent } from "@ionic/react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-import { stripePaymentMethodHandler } from "../actions/api/payment";
+import { stripePaymentMethodHandler, storeOrder } from "../actions/api/payment";
 import CardSection from "./StripePayCard";
 import { GlobalContext } from "../actions/globalContext";
 import GlobalActions from "../actions/globalActions";
@@ -13,7 +13,7 @@ export default function CheckoutForm() {
     toggleShowPaymentAlert,
     changePaymentStatus
   } = GlobalActions();
-  const { clearCart } = CartActions();
+  const { clearCart, checkOut } = CartActions();
   const [state, setState] = useContext(GlobalContext);
 
   const stripe = useStripe();
@@ -39,9 +39,10 @@ export default function CheckoutForm() {
     });
 
     stripePaymentMethodHandler(result).then(res => {
-      console.log(res);
       if (res.error === null) {
-        toggleShowPaymentAlert(true);
+        storeOrder(checkOut()).then(() => {
+          toggleShowPaymentAlert(true);
+        });
       } else {
         toggleShowPaymentAlert(false);
       }

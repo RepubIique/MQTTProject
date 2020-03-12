@@ -23,6 +23,16 @@ const CartActions = () => {
     setState({ ...state, cart: filteredArray });
   }
 
+  function checkOut() {
+    let { cart, currentuser } = state;
+    const obj = {
+      cart: cart.map(x => x.id),
+      totalAmount: cart.reduce((a, b) => a + b.price, 0),
+      userid: currentuser.id
+    };
+    return obj;
+  }
+
   function clearCart() {
     setState({ ...state, cart: [] });
   }
@@ -30,7 +40,8 @@ const CartActions = () => {
   return {
     addToCart,
     removeItem,
-    clearCart
+    clearCart,
+    checkOut
   };
 };
 

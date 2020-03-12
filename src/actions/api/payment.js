@@ -60,3 +60,10 @@ export const handleServerResponse = async response => {
     return { msg: "Payment successful", error: null, response };
   }
 };
+
+export const storeOrder = async data => {
+  const result = await fetcher()
+    .post("/api/storeorder", JSON.stringify(data))
+    .then(response => response.data)
+    .catch(err => console.log("Error", err));
+};

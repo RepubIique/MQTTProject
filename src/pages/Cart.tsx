@@ -42,7 +42,7 @@ const Cart: React.FC = () => {
   const { removeItem } = CartActions();
   const { toggleShowPaymentAlert } = GlobalActions();
   const { cart, showPaymentLoading, showPaymentAlert, paymentSuccess } = state;
-
+  const totalAmount = cart.reduce((a: any, b: any) => a + b.price, 0);
   return (
     <IonPage>
       <IonHeader>
@@ -62,7 +62,7 @@ const Cart: React.FC = () => {
           header={"Payment Status"}
           subHeader={
             paymentSuccess
-              ? "Your payment of $100 is successfull"
+              ? `Your payment of $${totalAmount.toFixed(2)} is successful`
               : "Payment has failed. Please try again."
           }
           message={""}
