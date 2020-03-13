@@ -6,6 +6,7 @@ import CardSection from "./StripePayCard";
 import { GlobalContext } from "../actions/globalContext";
 import GlobalActions from "../actions/globalActions";
 import CartActions from "../actions/cartActions";
+import MQTTConnect from "../actions/publish";
 
 export default function CheckoutForm() {
   const {
@@ -16,6 +17,7 @@ export default function CheckoutForm() {
   const { clearCart, checkOut } = CartActions();
   const [state, setState] = useContext(GlobalContext);
   const { currentuser } = state;
+  const { collection } = MQTTConnect();
 
   const stripe = useStripe();
   const elements = useElements();
@@ -55,7 +57,7 @@ export default function CheckoutForm() {
     <IonCard>
       <IonCardContent>
         <CardSection />
-        <IonButton expand="block" onClick={handleSubmit}>
+        <IonButton expand="block" onClick={(handleSubmit, collection)}>
           Pay
         </IonButton>
       </IonCardContent>
