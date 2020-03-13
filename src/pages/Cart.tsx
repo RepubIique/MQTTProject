@@ -69,25 +69,17 @@ const Cart: React.FC = () => {
           buttons={["OK"]}
         />
         <IonItemDivider>
-          <IonLabel>Cart</IonLabel>
+          <IonRow>
+            <IonCol>
+              <IonLabel>Cart</IonLabel>
+            </IonCol>
+            <IonCol>
+              <IonLabel className="totalPrice">
+                Total: ${totalAmount}.00
+              </IonLabel>
+            </IonCol>
+          </IonRow>
         </IonItemDivider>
-        <IonRow>
-          <IonCol>
-            {cart && cart.length > 0 ? (
-              <div>
-                {cart.map(function(y: any) {
-                  return (
-                    <IonLabel className="totalPrice" key={y.id}>
-                      Total: ${y.price}.00
-                    </IonLabel>
-                  );
-                })}
-              </div>
-            ) : (
-              ""
-            )}
-          </IonCol>
-        </IonRow>
 
         {cart && cart.length > 0 ? (
           <div>

@@ -37,9 +37,7 @@ client.on("message", (topic, message) => {
 let door = [1, 2, 3, 4];
 
 function openDoor() {
-  // client.on("connect", () => {
   for (let i = 0; i < door.length; i++) {
-    client.publish(topic, door[i]);
+    client.publish(topic, `${door[i]}`);
   }
-  // });
 }
