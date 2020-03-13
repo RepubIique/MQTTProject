@@ -1,21 +1,20 @@
 const MQTTConnect = () => {
-  let mqtt = require("mqtt");
-  let topic = "vendingmachine2/command";
-  const options = {
-    port: 16987,
-    host: "mqtt://hairdresser.cloudmqtt.com",
-    clientId: "KendrickTest",
-    username: "gdyqmxhb",
-    password: "qYlscJNX0e5F",
-    keepalive: 60,
-    reconnectPeriod: 1000,
-    protocolId: "MQIsdp",
-    protocolVersion: 3,
-    clean: true,
-    encoding: "utf8"
-  };
-
   function collection() {
+    let mqtt = require("mqtt");
+    let topic = "vendingmachine2/command";
+    const options = {
+      port: 16987,
+      host: "mqtt://hairdresser.cloudmqtt.com",
+      clientId: "KendrickTest",
+      username: "gdyqmxhb",
+      password: "qYlscJNX0e5F",
+      keepalive: 60,
+      reconnectPeriod: 1000,
+      protocolId: "MQIsdp",
+      protocolVersion: 3,
+      clean: true,
+      encoding: "utf8"
+    };
     const client = mqtt.connect("mqtt://hairdresser.cloudmqtt.com", options);
     client.on("connect", function() {
       // When connected

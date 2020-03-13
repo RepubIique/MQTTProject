@@ -57,8 +57,11 @@ export default function CheckoutForm() {
     <IonCard>
       <IonCardContent>
         <CardSection />
-        <IonButton expand="block" onClick={(handleSubmit, collection)}>
+        <IonButton expand="block" onClick={handleSubmit}>
           Pay
+        </IonButton>
+        <IonButton expand="block" onClick={collection}>
+          Door Open
         </IonButton>
       </IonCardContent>
     </IonCard>
