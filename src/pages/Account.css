@@ -13,3 +13,14 @@ ion-content ion-toolbar {
 .card {
   margin: 10px 15px 15px 15px;
 }
+
+.cartImg {
+  height: 70px;
+  width: 70px;
+  border-radius: 20%;
+}
+
+.textColumn {
+  text-align: center;
+  margin: auto;
+}

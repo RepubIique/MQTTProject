@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { IonButton, IonCard, IonCardContent } from "@ionic/react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { stripePaymentMethodHandler, storeOrder } from "../actions/api/payment";
@@ -41,6 +41,7 @@ export default function CheckoutForm() {
     stripePaymentMethodHandler(result).then(res => {
       if (res.error === null) {
         storeOrder(checkOut()).then(() => {
+          clearCart();
           toggleShowPaymentAlert(true);
         });
       } else {

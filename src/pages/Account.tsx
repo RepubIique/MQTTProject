@@ -22,14 +22,16 @@ import {
   IonItemDivider,
   useIonViewDidEnter
 } from "@ionic/react";
+
 import SignUpForm from "../components/SignUpForm";
 import LoginForm from "../components/LoginForm";
 
 import "./Account.css";
-import "../components/ProductCard.css";
 
 import { GlobalContext } from "../actions/globalContext";
 import { getOrdersByUserId } from "../actions/api/products";
+
+const moment = require("moment");
 
 const Account: React.FC = () => {
   const [state, setState] = useContext(GlobalContext);
@@ -113,19 +115,51 @@ const Account: React.FC = () => {
           <IonItemDivider>
             <IonLabel>Order History</IonLabel>
           </IonItemDivider>
-          {orderHistory.map((x: any) => (
-            <IonCard className="card">
-              <IonCardContent>
-                <img className="productImg" src={x.image_url}></img>
-                <div className="priceName">
-                  <IonCardTitle className="priceSize">
-                    ${x.price.toFixed(2)}
-                  </IonCardTitle>
-                  <h4 className="productName">{x.name}</h4>
-                </div>
-              </IonCardContent>
-            </IonCard>
-          ))}
+          {orderHistory.map((order: any) => {
+            let { order_id, created_on, total_amount } = order[0];
+            return (
+              <IonCard className="card" key={`order-${order_id}`}>
+                <IonCardContent>
+                  <IonGrid>
+                    <IonRow>
+                      <IonCol>
+                        <IonCardSubtitle>{`Order #${order_id}`}</IonCardSubtitle>
+                      </IonCol>
+                      <IonCol>
+                        <IonCardSubtitle>{`${moment(created_on).format(
+                          "DD/MM/YYYY"
+                        )}`}</IonCardSubtitle>
+                      </IonCol>
+                      <IonCol>
+                        <IonCardSubtitle>{`Total $${total_amount.toFixed(
+                          2
+                        )}`}</IonCardSubtitle>
+                      </IonCol>
+                    </IonRow>
+                  </IonGrid>
+                  {order.map((product: any) => (
+                    <IonRow>
+                      <IonCol>
+                        <img
+                          className="cartImg"
+                          src={product.image_url}
+                          alt="Avatar"
+                        />
+                      </IonCol>
+                      <IonCol className="textColumn">
+                        <IonCardSubtitle>
+                          {product.product_name}
+                        </IonCardSubtitle>
+                        <IonCardSubtitle>
+                          ${product.price.toFixed(2)}
+                        </IonCardSubtitle>
+                      </IonCol>
+                    </IonRow>
+                  ))}
+                </IonCardContent>
+              </IonCard>
+            );
+          })}
         </IonContent>
       )}
     </IonPage>
