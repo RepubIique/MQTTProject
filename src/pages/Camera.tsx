@@ -4,7 +4,9 @@ import {
   IonHeader,
   IonPage,
   IonTitle,
-  IonToolbar
+  IonToolbar,
+  IonCard,
+  IonCardContent
 } from "@ionic/react";
 
 import QrScanner from "../components/QrScanner";
@@ -14,10 +16,14 @@ const Camera = () => {
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Scan the QR code</IonTitle>
+            <IonTitle>Scan the QR code</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <QrScanner></QrScanner>
+        <IonCard>
+          <IonCardContent>
+            <QrScanner></QrScanner>
+          </IonCardContent>
+        </IonCard>
       </IonContent>
     </IonPage>
   );

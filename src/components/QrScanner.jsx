@@ -39,12 +39,8 @@ class QrScanner extends React.Component {
           onError={this.handleError}
           onScan={this.handleScan}
         />
-        <input
-          type="button"
-          value="Submit QR Code"
-          onClick={this.openImageDialog}
-        />
-        <p>{this.state.result}</p>
+
+        <h2>{this.state.result}</h2>
       </div>
     );
   }
