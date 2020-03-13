@@ -16,14 +16,16 @@ const options = {
   encoding: "utf8"
 };
 const client = mqtt.connect("mqtt://hairdresser.cloudmqtt.com", options);
+
 client.on("connect", function() {
   // When connected
   console.log("connected");
 
-  client.subscribe("vendingmachine1/feedback", error => {
+  client.subscribe("vendingmachine2/feedback", error => {
     if (error) console.error(error);
     else {
-      client.publish(topic, "1");
+      client.publish(topic, "0");
+      openDoor();
     }
   });
 });
@@ -31,3 +33,13 @@ client.on("connect", function() {
 client.on("message", (topic, message) => {
   console.log(topic, message.toString());
 });
+
+let door = [1, 2, 3, 4];
+
+function openDoor() {
+  // client.on("connect", () => {
+  for (let i = 0; i < door.length; i++) {
+    client.publish(topic, door[i]);
+  }
+  // });
+}

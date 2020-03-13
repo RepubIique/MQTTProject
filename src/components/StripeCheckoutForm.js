@@ -15,6 +15,7 @@ export default function CheckoutForm() {
   } = GlobalActions();
   const { clearCart, checkOut } = CartActions();
   const [state, setState] = useContext(GlobalContext);
+  const { currentuser } = state;
 
   const stripe = useStripe();
   const elements = useElements();
@@ -34,7 +35,7 @@ export default function CheckoutForm() {
       card: elements.getElement(CardElement),
       billing_details: {
         // Include any additional collected billing details.
-        name: "Jenny Rosen"
+        name: currentuser.first_name + " " + currentuser.last_name
       }
     });
 
