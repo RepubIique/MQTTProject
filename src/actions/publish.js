@@ -1,8 +1,8 @@
 let mqtt = require("mqtt");
 let topic = "vendingmachine2/command";
 const options = {
-  port: 16987,
-  host: "mqtt://hairdresser.cloudmqtt.com",
+  port: 36987,
+  host: "wss://hairdresser.cloudmqtt.com",
   clientId: "KendrickTest",
   username: "gdyqmxhb",
   password: "qYlscJNX0e5F",
@@ -17,7 +17,7 @@ const options = {
 };
 
 export const MQTTConnect = () => {
-  const client = mqtt.connect("mqtt://hairdresser.cloudmqtt.com", options);
+  const client = mqtt.connect("wss://hairdresser.cloudmqtt.com", options);
 
   client.on("connect", function() {
     // When connected
@@ -29,7 +29,7 @@ export const MQTTConnect = () => {
         client.publish(topic, "0");
       }
     });
-    openDoor();
+    // openDoor();
   });
 
   client.on("message", (topic, message) => {
@@ -37,7 +37,7 @@ export const MQTTConnect = () => {
   });
 
   function openDoor() {
-    let door = [1, 2];
+    let door = [1, 2, 3, 4];
     for (let i = 0; i < door.length; i++) {
       client.publish(topic, `${door[i]}`);
     }

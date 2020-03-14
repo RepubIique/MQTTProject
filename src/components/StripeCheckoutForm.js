@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import mqtt from "mqtt";
 import { IonButton, IonCard, IonCardContent } from "@ionic/react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { stripePaymentMethodHandler, storeOrder } from "../actions/api/payment";
@@ -44,7 +45,7 @@ export default function CheckoutForm() {
       if (res.error === null) {
         storeOrder(checkOut()).then(() => {
           clearCart();
-          // MQTTConnect();
+          MQTTConnect();
           toggleShowPaymentAlert(true);
         });
       } else {
@@ -59,9 +60,6 @@ export default function CheckoutForm() {
         <CardSection />
         <IonButton expand="block" onClick={handleSubmit}>
           Pay
-        </IonButton>
-        <IonButton expand="block" onClick={MQTTConnect}>
-          Open Door
         </IonButton>
       </IonCardContent>
     </IonCard>
