@@ -58,6 +58,7 @@ export const LoginForm: React.FC = () => {
             Password{<span style={{ color: "red" }}> * </span>}
           </IonLabel>
           <IonInput
+            type="password"
             value={password}
             onIonChange={e => {
               onInputChange({ key: "password", value: e.detail.value });

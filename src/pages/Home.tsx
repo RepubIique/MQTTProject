@@ -23,7 +23,7 @@ const Home: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>NanoBox</IonTitle>
+          <IonTitle>Nanobar</IonTitle>
           <IonButton className="qrIcon" href="/camera">
             <IonIcon icon={qrCodeSharp}></IonIcon>
           </IonButton>

@@ -15,7 +15,7 @@ import {
 export const CardExample: React.FC = () => (
   <IonCard>
     <IonCardHeader>
-      <IonCardSubtitle>NanoBox</IonCardSubtitle>
+      <IonCardSubtitle>Nanobar</IonCardSubtitle>
       <IonCardTitle>Welcome !</IonCardTitle>
     </IonCardHeader>
     <img src="./assets/LandingPage.png" />
