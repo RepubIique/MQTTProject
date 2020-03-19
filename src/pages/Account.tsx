@@ -123,7 +123,7 @@ const Account: React.FC = () => {
                   <IonGrid>
                     <IonRow>
                       <IonCol>
-                        <IonCardSubtitle>{`Order #${order_id}`}</IonCardSubtitle>
+                        <IonCardSubtitle>{`Order id: ${order_id}`}</IonCardSubtitle>
                       </IonCol>
                       <IonCol>
                         <IonCardSubtitle>{`${moment(created_on).format(
