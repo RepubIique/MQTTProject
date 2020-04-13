@@ -23,7 +23,6 @@ const CARD_ELEMENT_OPTIONS = {
 function CardSection() {
   return (
     <label>
-      Payment
       <CardElement options={CARD_ELEMENT_OPTIONS} />
     </label>
   );
