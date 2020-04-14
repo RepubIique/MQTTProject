@@ -17,7 +17,7 @@ const CartActions = () => {
   function removeItem(data) {
     let { cart } = state;
     let toRemove = data;
-    let filteredArray = cart.filter(function(item) {
+    let filteredArray = cart.filter(function (item) {
       return item.id !== toRemove;
     });
     setState({ ...state, cart: filteredArray });
@@ -26,9 +26,9 @@ const CartActions = () => {
   function checkOut() {
     let { cart, currentuser } = state;
     const obj = {
-      cart: cart.map(x => x.id),
+      cart: cart.map((x) => x.id),
       totalAmount: cart.reduce((a, b) => a + b.price, 0),
-      userid: currentuser.id
+      userid: currentuser.id,
     };
     return obj;
   }
@@ -41,7 +41,7 @@ const CartActions = () => {
     addToCart,
     removeItem,
     clearCart,
-    checkOut
+    checkOut,
   };
 };
 
