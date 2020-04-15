@@ -22,7 +22,7 @@ import {
   IonButton,
   IonIcon,
   IonSpinner,
-  IonAlert
+  IonAlert,
 } from "@ionic/react";
 import { GlobalContext } from "../actions/globalContext";
 import "./Cart.css";
@@ -83,7 +83,7 @@ const Cart: React.FC = () => {
 
         {cart && cart.length > 0 ? (
           <div>
-            {cart.map(function(x: any) {
+            {cart.map(function (x: any) {
               return (
                 <IonCard key={x.id}>
                   <IonRow>
@@ -98,7 +98,7 @@ const Cart: React.FC = () => {
                       <IonButton
                         className="deleteIcon"
                         color="danger"
-                        onClick={e => {
+                        onClick={(e) => {
                           removeItem(x.id);
                         }}
                       >

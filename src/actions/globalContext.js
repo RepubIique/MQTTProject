@@ -20,6 +20,7 @@ const GlobalProvider = (props) => {
     paymentSuccess: false,
     showPaymentAlert: false,
     orderHistory: [],
+    loading: false,
   });
 
   return (
