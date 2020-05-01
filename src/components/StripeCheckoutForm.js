@@ -42,6 +42,7 @@ export default function CheckoutForm() {
       billing_details: {
         // Include any additional collected billing details.
         name: currentuser.first_name + " " + currentuser.last_name,
+        email: currentuser.email,
       },
     });
 
